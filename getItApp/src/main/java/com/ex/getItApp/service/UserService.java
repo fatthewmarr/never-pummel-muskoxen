@@ -1,0 +1,12 @@
+package com.ex.getItApp.service;
+
+import com.ex.getItApp.model.User;
+
+public interface UserService {
+
+	public void addUser(User client);
+	public User findUserByEmailAndPassword(String email, String password);
+	public User findUserByEmail(String email);
+	
+	
+}
