@@ -7,6 +7,7 @@ public interface UserService {
 	public void addUser(User client);
 	public User findUserByEmailAndPassword(String email, String password);
 	public User findUserByEmail(String email);
+	public User findUserById(Integer id);
 	
 	
 }

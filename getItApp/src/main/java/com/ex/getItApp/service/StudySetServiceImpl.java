@@ -1,11 +1,13 @@
 package com.ex.getItApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ex.getItApp.model.StudySet;
-
+import com.ex.getItApp.model.User;
 import com.ex.getItApp.repository.StudySetRepository;
 
 @Service
@@ -18,7 +20,6 @@ public class StudySetServiceImpl implements StudySetService{
 	@Override
 	public void addStudySet(StudySet studyset) {
 		studysetRepo.save(studyset);
-		
 	}
 
 	@Override
@@ -28,10 +29,12 @@ public class StudySetServiceImpl implements StudySetService{
 	}
 
 	@Override
-	public StudySet findStudySetByAuthorId(Integer Id) {
-		return studysetRepo.findStudySetByauthorid(Id);
+	public List<StudySet> findStudySetsByAuthor(User author) {
+		return studysetRepo.findStudySetsByauthor(author);
 	}
 
-
+	public List<StudySet> findAllStudySets() {
+		return studysetRepo.findAll();
+	}
 
 }

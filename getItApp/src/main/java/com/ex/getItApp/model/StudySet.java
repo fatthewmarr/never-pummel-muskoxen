@@ -24,25 +24,25 @@ public class StudySet {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="StudySetSeq")
 	private Integer id;
 	
-	@JoinColumn(name="AUTHOR_ID")
-	@ManyToOne(fetch=FetchType.EAGER, targetEntity=User.class)
-	private Integer authorid;
+	@JoinColumn(name="AUTHOR_ID", nullable=false)
+	@ManyToOne(fetch=FetchType.EAGER) //targetEntity=User.class)
+	private User author;
 	
 	@Column(name="STUDYSET_NAME")
 	private String name;
 	
 	public StudySet() {}
 
-	public StudySet(Integer author_id, String name) {
+	public StudySet(User author, String name) {
 		super();
-		this.authorid = author_id;
+		this.author = author;
 		this.name = name;
 	}
 
-	public StudySet(Integer id, Integer author_id, String name) {
+	public StudySet(Integer id, User author, String name) {
 		super();
 		this.id = id;
-		this.authorid = author_id;
+		this.author = author;
 		this.name = name;
 	}
 
@@ -54,12 +54,12 @@ public class StudySet {
 		this.id = id;
 	}
 
-	public Integer getAuthor_id() {
-		return authorid;
+	public User getAuthor() {
+		return author;
 	}
 
-	public void setAuthor_id(Integer author_id) {
-		this.authorid = author_id;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 
 	public String getName() {
@@ -72,7 +72,7 @@ public class StudySet {
 
 	@Override
 	public String toString() {
-		return "StudySet [id=" + id + ", author_id=" + authorid + ", name=" + name + "]";
+		return "StudySet [id=" + id + ", author_id=" + author.getId() + ", name=" + name + "]";
 	};
 	
 	

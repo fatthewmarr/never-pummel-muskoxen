@@ -28,6 +28,12 @@ public class UserServiceImpl implements UserService {
 	public User findUserByEmail(String email) {
 		return userRepo.findUserByEmail(email);
 	}
+
+	@Override
+	public User findUserById(Integer id) {
+		// TODO Auto-generated method stub
+		return userRepo.findUserById(id);
+	}
 	
 
 }
