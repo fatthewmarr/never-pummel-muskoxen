@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   }
 
   private menuItemsArray: any[] = [
-    { "title": "Electricity", "link": "#" },
+    { "title": "Profile", "link": "/profile" },
     { "title": "Mobile Bill", "link": "#" },
     {
       "title": "Home and Kitchen", "link": "#",
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
 
   private onItemSelect(item: any) {
 
-    console.log(item);
+    this.router.navigate([item.link]);
     if (item.title == "Logout") {
       this.cookieService.delete('Test');
       window.location.reload();

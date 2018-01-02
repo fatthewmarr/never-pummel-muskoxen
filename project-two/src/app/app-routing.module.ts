@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginSignupPageComponent } from './login-signup-page/login-signup-page.component';
 import { DasboardComponent } from './dasboard/dasboard.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' }, 
   { path: 'main', component: LoginSignupPageComponent },
   { path: 'login', component: LoginPageComponent},
   { path: 'signup', component: SignupPageComponent},
-  { path: 'login/dashboard', component: DasboardComponent}
+  { path: 'login/dashboard', component: DasboardComponent},
+  {path: 'profile', component: UserProfileComponent}
 ]
 
 @NgModule({

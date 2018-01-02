@@ -23,6 +23,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './carousel/carousel.component';
 import { UserStudySetsComponent } from './user-study-sets/user-study-sets.component';
 import { UserStudySessionsComponent } from './user-study-sessions/user-study-sessions.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileService } from './user-profile/user-profile.service';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -35,7 +38,8 @@ import { UserStudySessionsComponent } from './user-study-sessions/user-study-ses
     NavbarComponent,
     CarouselComponent,
     UserStudySetsComponent,
-    UserStudySessionsComponent
+    UserStudySessionsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +54,10 @@ import { UserStudySessionsComponent } from './user-study-sessions/user-study-ses
     MatCardModule,
     SlideMenuModule,
     NgbModule.forRoot(),
-    SlickModule.forRoot()
+    SlickModule.forRoot(),
+    HttpModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, UserProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
