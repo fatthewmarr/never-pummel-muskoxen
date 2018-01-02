@@ -24,7 +24,7 @@ public class QuestionAnswer {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="qaSeq")
 	private Integer id;
 	
-	@JoinColumn(name="STUDYSET")
+	@JoinColumn(name="STUDYSET", nullable=false)
 	@ManyToOne(fetch=FetchType.EAGER)
 	private StudySet studyset;
 	

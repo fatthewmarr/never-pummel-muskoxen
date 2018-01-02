@@ -37,4 +37,9 @@ public class StudySetServiceImpl implements StudySetService{
 		return studysetRepo.findAll();
 	}
 
+	@Override
+	public StudySet findStudySetByName(String name) {
+		return studysetRepo.findStudySetByname(name);
+	}
+
 }

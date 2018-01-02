@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,17 +36,23 @@ public class StudySetController {
 		service.addStudySet(set);
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/author/{id}", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<StudySet> getAuthorSets(@PathVariable int id) {
 		System.out.println("Id is: " + id);
-		Integer ID = id;
-		User author = us.findUserById(ID);
+		Integer temp = id;
+		User author = us.findUserById(temp);
 		System.out.println(author);
 		return service.findStudySetsByAuthor(author);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,  produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST,  produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<StudySet> getAll(){
 		return service.findAllStudySets();
+	}
+	
+	@RequestMapping(value="/name/{name}", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	public StudySet getSetByName(@PathVariable String name) {
+		System.out.println("Name is: " + name);
+		return service.findStudySetByName(name);
 	}
 }

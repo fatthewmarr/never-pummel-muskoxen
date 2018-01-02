@@ -1,6 +1,7 @@
 package com.ex.getItApp.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,13 @@ public class QuestionAnswerServiceImpl implements QuestionAnswerService{
 	}
 
 	@Override
-	public ArrayList<QuestionAnswer> findQuestionAnswerByStudySet(StudySet studyset) {
+	public ArrayList<QuestionAnswer> findQuestionAnswersByStudySet(StudySet studyset) {
 		return questionanswerRepo.findQuestionAnswerBystudyset(studyset);
 	}
-	
+
+	@Override
+	public List<QuestionAnswer> findAllQuestionAnswers() {
+		return questionanswerRepo.findAll();
+	}	
 
 }

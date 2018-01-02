@@ -14,5 +14,6 @@ public interface StudySetRepository extends JpaRepository<StudySet, Integer> {
 
 	public StudySet findStudySetById(Integer Id);
 	public List<StudySet> findStudySetsByauthor(User author);
+	public StudySet findStudySetByname(String name);
 	
 }

@@ -12,6 +12,7 @@ public interface StudySetService {
 	public StudySet findStudySetById(Integer Id);
 	public List<StudySet> findStudySetsByAuthor(User author);
 	public List<StudySet> findAllStudySets();
+	public StudySet findStudySetByName(String name);
 
 
 }
