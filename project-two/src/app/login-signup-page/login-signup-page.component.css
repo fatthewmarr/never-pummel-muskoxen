@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta+Malar:500');
+
+body {
+    /* background-image: url("web_img.png");
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+
+    font-family: 'Mukta Malar', sans-serif;
+    background-color: lightskyblue; */
+    text-align: center;
+}
+
+.logo {
+    margin-top: 120px;
+}
+
+.suit_and_tie {
+    color: white;
+    font-size: 20px;
+    font-family: helvetica;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 20px;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    background-color: rgba(8, 8, 8, 0);
+    padding: 4px 30px;
+    width: 70%;
+  }
+  
+  .suit_and_tie:hover {
+    color: lightskyblue;
+    background-color: white;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    cursor: pointer;
+  }
+
+  .suit_and_tie_two {
+    color: lightskyblue;
+    font-size: 20px;
+    font-family: helvetica;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 20px;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    background-color: white;
+    padding: 4px 30px;
+    width: 70%;
+  }
+  
+  .suit_and_tie_two:hover {
+    color: white;
+    font-size: 20px;
+    font-family: helvetica;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 20px;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    background-color: rgba(8, 8, 8, 0);
+    padding: 4px 30px;
+    width: 70%;
+    cursor: pointer;
+  }
