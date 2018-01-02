@@ -16,7 +16,7 @@ import com.ex.getItApp.model.User;
 import com.ex.getItApp.service.StudySetService;
 import com.ex.getItApp.service.UserService;
 
-//@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("getit/sets")
 public class StudySetController {

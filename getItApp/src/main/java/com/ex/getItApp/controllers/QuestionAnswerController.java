@@ -17,7 +17,7 @@ import com.ex.getItApp.model.User;
 import com.ex.getItApp.service.QuestionAnswerService;
 import com.ex.getItApp.service.StudySetService;
 
-//@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("getit/qa")
 public class QuestionAnswerController {
