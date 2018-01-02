@@ -1,0 +1,14 @@
+package com.ex.getItApp.service;
+
+import com.ex.getItApp.model.StudySet;
+import com.ex.getItApp.model.User;
+
+
+public interface StudySetService {
+	
+	public void addStudySet(StudySet studyset);
+	public StudySet findStudySetById(Integer Id);
+	public StudySet findStudySetByAuthor(User author);
+
+
+}

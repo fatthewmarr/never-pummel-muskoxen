@@ -1,0 +1,37 @@
+package com.ex.getItApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.ex.getItApp.model.StudySet;
+
+import com.ex.getItApp.repository.StudySetRepository;
+
+@Service
+@Transactional
+public class StudySetServiceImpl implements StudySetService{
+
+	@Autowired
+	private StudySetRepository studysetRepo;
+
+	@Override
+	public void addStudySet(StudySet studyset) {
+		studysetRepo.save(studyset);
+		
+	}
+
+	@Override
+	public StudySet findStudySetById(Integer Id) {
+		return studysetRepo.findStudySetById(Id);
+		
+	}
+
+	@Override
+	public StudySet findStudySetByAuthorId(Integer Id) {
+		return studysetRepo.findStudySetByauthorid(Id);
+	}z
+
+
+
+}

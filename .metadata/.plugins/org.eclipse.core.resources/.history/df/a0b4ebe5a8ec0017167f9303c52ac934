@@ -1,0 +1,36 @@
+package com.ex.getItApp.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ex.getItApp.model.StudySet;
+import com.ex.getItApp.service.StudySetService;
+
+//@CrossOrigin(origins="http://localhost:4200")
+@RestController
+@RequestMapping("getit/sets")
+public class StudySetController {
+
+	@Autowired
+	StudySetService service;
+	
+	static {
+		System.out.println("In the StudySet Controller");
+	}
+	
+	@RequestMapping(value="/addset", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void addStudySet(@RequestBody StudySet set) {
+		service.addStudySet(set);
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public StudySet findStudySetById(@PathVariable int id) {
+		Integer ID = id;
+		return service.findStudySetByAuthorId(ID);
+	}
+}

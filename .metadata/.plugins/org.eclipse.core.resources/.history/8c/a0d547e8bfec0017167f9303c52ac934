@@ -1,0 +1,46 @@
+package com.ex.getItApp.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ex.getItApp.model.StudySet;
+import com.ex.getItApp.model.User;
+import com.ex.getItApp.service.StudySetService;
+import com.ex.getItApp.service.UserService;
+
+//@CrossOrigin(origins="http://localhost:4200")
+@RestController
+@RequestMapping("getit/sets")
+public class StudySetController {
+
+	@Autowired
+	StudySetService service;
+	UserService us;
+	
+	static {
+		System.out.println("In the StudySet Controller");
+	}
+	
+	@RequestMapping(value="/addset", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void addStudySet(@RequestBody StudySet set) {
+		service.addStudySet(set);
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void findStudySetByAuthor(@PathVariable int id) {
+		User author = us.findUserById(id);
+		service.findStudySetsByAuthor(author);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,  produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<StudySet> getAll(){
+		return service.findAllStudySets();
+	}
+}
