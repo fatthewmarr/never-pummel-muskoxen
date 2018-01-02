@@ -20,13 +20,15 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { DasboardComponent } from './dasboard/dasboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent, CreateStudysetModal, QAModal } from './carousel/carousel.component';
 import { UserStudySetsComponent } from './user-study-sets/user-study-sets.component';
 import { UserStudySessionsComponent } from './user-study-sessions/user-study-sessions.component';
+import { StudySetService } from './study-set.service';
+import { QuestionAnswerService } from './question-answer.service';
+import { MatFormFieldModule, MatDialogModule, MatRadioModule } from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileService } from './user-profile/user-profile.service';
 import { HttpModule } from '@angular/http';
-
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { HttpModule } from '@angular/http';
     CarouselComponent,
     UserStudySetsComponent,
     UserStudySessionsComponent,
+    CreateStudysetModal,
+    QAModal,
     UserProfileComponent
   ],
   imports: [
@@ -55,9 +59,15 @@ import { HttpModule } from '@angular/http';
     SlideMenuModule,
     NgbModule.forRoot(),
     SlickModule.forRoot(),
-    HttpModule
+    MatFormFieldModule,
+    MatDialogModule,
+    HttpClientModule,
+    MatRadioModule,
+	HttpModule
   ],
-  providers: [CookieService, UserProfileService],
+  entryComponents: [CreateStudysetModal, QAModal],
+  providers: [CookieService,  StudySetService, QuestionAnswerService, UserProfileService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
