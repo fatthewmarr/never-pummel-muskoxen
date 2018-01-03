@@ -22,7 +22,7 @@ export class CarouselComponent implements OnInit {
 
   mode : String;
 
-  constructor(private router: Router, private QAService: QuestionAnswerService, public dialog: MatDialog, private cookieService: CookieService) {
+  constructor(private cookie : CookieService, private router: Router, private QAService: QuestionAnswerService, public dialog: MatDialog) {
     this.OQA = this.QAService.getQAsBySet("no");
     this.OQA.subscribe(val => this.QA = val);
   }
@@ -55,7 +55,7 @@ export class CarouselComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(['login/set']);
+      this.router.navigate(['login/dashboard/set']);
     }); 
   }
 }
@@ -119,7 +119,6 @@ export class QAModal {
     private setService: StudySetService,
     public dialogRef: MatDialogRef<QAModal>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      console.log(this.setService.currentSet);
       for(var i = 0; i < 3; i++) {
         var currentQA = new QA();
         currentQA.answer = "";
@@ -129,8 +128,8 @@ export class QAModal {
       }
      }
 
+
   onNoClick(): void {
-    console.log(this.setService.currentSet);
     this.dialogRef.close();
   }
 

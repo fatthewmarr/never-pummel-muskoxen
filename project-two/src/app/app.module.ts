@@ -26,11 +26,11 @@ import { UserStudySetsComponent } from './user-study-sets/user-study-sets.compon
 import { UserStudySessionsComponent } from './user-study-sessions/user-study-sessions.component';
 import { StudySetService } from './study-set.service';
 import { QuestionAnswerService } from './question-answer.service';
-import { MatFormFieldModule, MatDialogModule, MatRadioModule } from '@angular/material';
+import { MatFormFieldModule, MatDialogModule, MatRadioModule, MatSlideToggleModule } from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileService } from './user-profile/user-profile.service';
 import { HttpModule } from '@angular/http';
-import { StudySetViewComponent } from './study-set-view/study-set-view.component';
+import { StudySetViewComponent, EditModal, QAModal2 } from './study-set-view/study-set-view.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,9 @@ import { StudySetViewComponent } from './study-set-view/study-set-view.component
     CreateStudysetModal,
     QAModal,
     UserProfileComponent,
-    StudySetViewComponent
+    StudySetViewComponent,
+    EditModal,
+    QAModal2
   ],
   imports: [
     BrowserModule,
@@ -67,9 +69,10 @@ import { StudySetViewComponent } from './study-set-view/study-set-view.component
     MatDialogModule,
     HttpClientModule,
     MatRadioModule,
-	  HttpModule
+    HttpModule,
+    MatSlideToggleModule
   ],
-  entryComponents: [CreateStudysetModal, QAModal],
+  entryComponents: [CreateStudysetModal, QAModal, QAModal2, EditModal],
   providers: [CookieService,  StudySetService, QuestionAnswerService, UserProfileService],
   bootstrap: [AppComponent]
 })

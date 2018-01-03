@@ -12,6 +12,7 @@ const httpOptions = {
 @Injectable()
 export class QuestionAnswerService {
 
+  currentQA : QA;
 
   constructor(private http: HttpClient) { }
 
