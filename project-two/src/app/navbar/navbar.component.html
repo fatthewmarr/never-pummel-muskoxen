@@ -1,12 +1,18 @@
-<nav class="navbar navbar-fixed-top" style="background-color: #007bff!important;">
+<mat-toolbar style="background-color: #337AB7; color: white">
+    <span>Dashboard</span>
 
-    <cuppa-slidemenu style="float: left;" [config]="config" [menulist]="menuItemsArray" 
-    (onItemSelect)="onItemSelect($event)">
-    </cuppa-slidemenu>
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item> Settings </button>
+        <button mat-menu-item (click)="logout()"> Logout </button>
+    </mat-menu>
 
-    <div class="navbar-header">
-        <a class="navbar-brand" style="color: white; font-size: 1.6em; float: middle !important;">Dashboard</a>
-    </div>  
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>menu</mat-icon>
+    </button>
 
-</nav>
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
 
+
+
+</mat-toolbar>

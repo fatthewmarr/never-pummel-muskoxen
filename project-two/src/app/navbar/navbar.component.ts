@@ -15,38 +15,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  private menuItemsArray: any[] = [
-    { "title": "Profile", "link": "/profile" },
-    { "title": "Mobile Bill", "link": "#" },
-    {
-      "title": "Home and Kitchen", "link": "#",
-      "subItems": [
-        { "title": "Furniture", "link": "#" },
-        { "title": "Cookware", "link": "#" },
-      ]
-    },
-    {
-      "title": "Car and Bike Accessories", "link": "#",
-      "subItems": [
-        { "title": "Tyres and Alloys", "link": "#" },
-        { "title": "Comfort and Safety", "link": "#" },
-      ]
-    },
-    { "title": "Logout" },
-  ];
-
-  config = {
-    animation: "arrowturn",
-  };
-
-  private onItemSelect(item: any) {
-
-    this.router.navigate([item.link]);
-    if (item.title == "Logout") {
-      this.cookieService.delete('Test');
-      window.location.reload();
-    }
-
+  logout() {
+    this.cookieService.delete('Test');
+    this.router.navigate(['/main']);
   }
 
 }

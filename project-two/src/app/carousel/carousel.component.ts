@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { QA } from '../QA';
 import { QuestionAnswerService } from '../question-answer.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-carousel',
@@ -21,7 +22,7 @@ export class CarouselComponent implements OnInit {
 
   mode : String;
 
-  constructor(private router: Router, private QAService: QuestionAnswerService, public dialog: MatDialog) {
+  constructor(private router: Router, private QAService: QuestionAnswerService, public dialog: MatDialog, private cookieService: CookieService) {
     this.OQA = this.QAService.getQAsBySet("no");
     this.OQA.subscribe(val => this.QA = val);
   }

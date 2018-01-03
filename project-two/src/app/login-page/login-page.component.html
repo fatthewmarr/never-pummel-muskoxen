@@ -1,28 +1,33 @@
-<img src="../../assets/images/getIt-img.png" class="loginPagelogo">
-
-<br>
-
-<form (ngSubmit)="processForm()" class="example-form" style="margin-top: 10%;">
-  <mat-form-field class="example-full-width">
-    <input matInput name="email" placeholder="Email" value="ronyalvarez@gmail.com"
-    [(ngModel)]="user.email">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input type="password" matInput name="password" placeholder="Password" value="Password"
-    [(ngModel)]="user.password">
-  </mat-form-field>
-
-  <br>
-
-  <!-- <button type="submit" class="suit_and_tie">LOGIN</button> -->
-  <button type="submit" (click)="processForm()">Submit</button>
-
-  <br>
-
-  <p style="color: white;">Don't have an account? <a routerLink="/signup" class="loginLink">Sign up!</a></p>
+<div class="partial">
+  <img src="../../assets/images/getIt-img.png" class="loginPagelogo" >
   
+  <br>
 
-  <p style="color: red;" *ngIf="valid">Incorrect credentials, please try again!</p>
+  <form (ngSubmit)="processForm()" class="example-form" style="margin-top: 10%;">
+    <mat-form-field class="example-full-width">
+      <input matInput name="email" placeholder="Email" value="ronyalvarez@gmail.com" [(ngModel)]="user.email">
+    </mat-form-field>
 
-</form>
+    <mat-form-field class="example-full-width">
+      <input type="password" matInput name="password" placeholder="Password" value="Password" [(ngModel)]="user.password">
+    </mat-form-field>
+
+    <br>
+    <br>
+
+    <!-- <button type="submit" class="suit_and_tie">LOGIN</button> -->
+    <div class="variation-b">
+        <button type="submit" (click)="processForm()" class="suit_and_tie">LOGIN</button>
+    </div>
+
+    <br>
+
+    <p style="color: white;">Don't have an account?
+      <a routerLink="/signup" class="loginLink">Sign up!</a>
+    </p>
+
+
+    <p style="color: red;" *ngIf="valid">Incorrect credentials, please try again!</p>
+
+  </form>
+</div>
