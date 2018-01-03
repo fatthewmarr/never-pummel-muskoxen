@@ -20,7 +20,7 @@ body {
 }
 
 .column[_ngcontent-c6] {
-    float: right;
+    float: left;
     width: 50%;
     padding: 10px;
 }

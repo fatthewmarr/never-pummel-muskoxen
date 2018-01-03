@@ -25,6 +25,6 @@ export class UserStudySetsComponent  {
 
     gotoSet(set : StudySet) {
       this.setService.currentSet = set;
-      this.router.navigate(['login/dashboard/set']);
+      this.router.navigate(['set']);
     }
 }   
