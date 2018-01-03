@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupPageComponent},
   { path: 'login/dashboard', component: DasboardComponent},
   { path: 'profile', component: UserProfileComponent},
-  { path: 'login/dashboard/set', component: StudySetViewComponent}
+  { path: 'set', component: StudySetViewComponent}
 ]
 
 @NgModule({

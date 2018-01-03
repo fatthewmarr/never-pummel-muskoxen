@@ -34,6 +34,10 @@ export class CarouselComponent implements OnInit {
 
   afterChange(e) {
   }
+
+  goToProfile() {
+    this.router.navigate(["/profile"]);
+  }
   
   openCreateModal(): void {
     let dialogRef = this.dialog.open(CreateStudysetModal, {

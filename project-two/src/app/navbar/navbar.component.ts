@@ -20,4 +20,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/main']);
   }
 
+  profile() {
+    this.router.navigate(['/profile']);
+  }
+
+  dashboard() {
+    this.router.navigate(['/login/dashboard']);
+  }
+
 }

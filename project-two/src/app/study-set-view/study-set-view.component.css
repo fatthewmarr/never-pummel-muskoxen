@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+}
+
+div {
+    margin: 0;
+    text-align: center;
+}
+
+.question {
+   font-size: 1.2em;
+   font-weight: 600;
+}
+
+.answer {
+
+}
+
+.element1 {
+    float:left;margin-right:10px;
+} 
+
+.element2 {
+    float:left;
+} 

@@ -27,6 +27,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "cuppa-ng2-slidemenu": "^2.0.0",
+    "jquery": "^3.2.1",
     "ng2-bootstrap-grid": "^0.5.1",
     "ngx-cookie-service": "^1.0.9",
     "ngx-slick": "^0.1.3",
