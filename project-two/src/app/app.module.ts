@@ -29,6 +29,7 @@ import { MatFormFieldModule, MatDialogModule, MatRadioModule } from '@angular/ma
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileService } from './user-profile/user-profile.service';
 import { HttpModule } from '@angular/http';
+import { StudySetViewComponent } from './study-set-view/study-set-view.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HttpModule } from '@angular/http';
     UserStudySessionsComponent,
     CreateStudysetModal,
     QAModal,
-    UserProfileComponent
+    UserProfileComponent,
+    StudySetViewComponent
   ],
   imports: [
     BrowserModule,
@@ -63,11 +65,10 @@ import { HttpModule } from '@angular/http';
     MatDialogModule,
     HttpClientModule,
     MatRadioModule,
-	HttpModule
+	  HttpModule
   ],
   entryComponents: [CreateStudysetModal, QAModal],
   providers: [CookieService,  StudySetService, QuestionAnswerService, UserProfileService],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
