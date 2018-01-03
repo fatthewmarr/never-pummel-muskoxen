@@ -15,6 +15,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { DasboardComponent } from './dasboard/dasboard.component';
@@ -58,6 +59,7 @@ import { StudySetViewComponent } from './study-set-view/study-set-view.component
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
+    MatIconModule,
     SlideMenuModule,
     NgbModule.forRoot(),
     SlickModule.forRoot(),

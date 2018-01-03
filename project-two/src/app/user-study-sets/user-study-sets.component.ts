@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { StudySetService } from '../study-set.service';
 import { StudySet } from '../studyset';
-import { Observable } from 'rxjs/observable'
+import { Observable } from 'rxjs/observable';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-study-sets',
@@ -11,9 +13,21 @@ import { Observable } from 'rxjs/observable'
 export class UserStudySetsComponent  {
   OSets : Observable<StudySet[]>;
   sets : StudySet[];
+  cookieValue: string;
   
-    constructor(private setService: StudySetService) {
-      this.OSets = this.setService.getAuthorSets(1);
+    constructor(private router: Router, private setService: StudySetService, private cookieService: CookieService) {
+
+      this.cookieValue = JSON.parse(this.cookieService.get('Test'));
+
+      this.OSets = this.setService.getAuthorSets(this.cookieValue["id"]);
       this.OSets.subscribe(val => this.sets = val);
+    }
+
+    gotoSet(name : String) {
+      var that = this;
+      setTimeout(function() {
+        that.setService.getSetByName(name).subscribe(val => that.setService.currentSet = val);
+      }, 200);
+      this.router.navigate(['login/dashboard/set']);
     }
 }   

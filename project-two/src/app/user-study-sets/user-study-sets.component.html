@@ -3,9 +3,9 @@
   <div class="column" *ngFor="let set of sets">
     <mat-card class="example-card" style="margin-bottom: 1%;">
       <mat-card-content>
-        <p>50 Questions | {{set.name}}</p>
+        <p>{{set.name}}</p>
       </mat-card-content>
-      <a class="btn btn-primary">Open</a>
+      <a (click)="gotoSet(set.name)" class="btn btn-primary">Open</a>
     </mat-card>
   </div>
 

@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Mukta+Malar:500');
 
 body {
-    /* background-image: url("web_img.png");
-    background-position: center center;
-    background-repeat:  no-repeat;
-    background-attachment: fixed;
-    background-size:  cover;
-
-    font-family: 'Mukta Malar', sans-serif;
-    background-color: lightskyblue; */
     text-align: center;
+}
+
+.partial { 
+  height: 800px;
+  background: url(../../assets/images/web_img.png);
 }
 
 .logo {
