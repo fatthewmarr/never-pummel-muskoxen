@@ -17,8 +17,7 @@ export class StudySetViewComponent implements OnInit {
 
   OQA : Observable<QA[]>;
   QA : QA[];
-  var
-  mode : String;
+  exists : boolean = true;
   set : StudySet;
 
   constructor(private setService : StudySetService, private router: Router, 
@@ -27,8 +26,15 @@ export class StudySetViewComponent implements OnInit {
     this.OQA = this.QAService.getQAsBySet(this.set.name);
     this.OQA.subscribe(val => this.QA = val);
   }
+
+  routeBack() {
+    this.router.navigate(['login/dashboard']);
+  }
+  toggle() {
+    this.exists = !this.exists;
+  }
   openQAModal(): void {
-    let dialogRef = this.dialog.open(QAModal, {
+    let dialogRef = this.dialog.open(QAModal2, {
       width: '450px',
       data: {}
     });
@@ -38,11 +44,24 @@ export class StudySetViewComponent implements OnInit {
       this.OQA.subscribe(val => this.QA = val);
     }); 
   }
-  ngOnInit() {
+
+  openEditModal(qa : QA): void {
+    this.QAService.currentQA = qa;
+    let dialogRef = this.dialog.open(EditModal, {
+      width: '450px',
+      data: { current: qa}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      var send : QA[] = [this.QAService.currentQA];
+      console.log(send);
+      this.QAService.addQAs(send);
+    }); 
   }
 
+  ngOnInit() {
+  }
 }
-
 
 @Component({
   selector: 'dialog-overview-example-dialog',
@@ -56,15 +75,14 @@ export class StudySetViewComponent implements OnInit {
   </div> <button mat-raised-button (click)="addQA()">Add QA</button>
   <button mat-raised-button (click)="submit()">Submit</button>`,
 })
-export class QAModal {
+export class QAModal2 {
 
   QA : QA[] = [];
 
   constructor(private QAService: QuestionAnswerService,
     private setService: StudySetService,
-    public dialogRef: MatDialogRef<QAModal>,
+    public dialogRef: MatDialogRef<QAModal2>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      console.log(this.setService.currentSet);
       for(var i = 0; i < 3; i++) {
         var currentQA = new QA();
         currentQA.answer = "";
@@ -75,7 +93,6 @@ export class QAModal {
      }
 
   onNoClick(): void {
-    console.log(this.setService.currentSet);
     this.dialogRef.close();
   }
 
@@ -94,6 +111,38 @@ export class QAModal {
       }
     }
     this.QAService.addQAs(temp);
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  template: `<mat-form-field>
+      <input matInput [(ngModel)]="qa.question" placeholder="{{qa.question}}">    
+  </mat-form-field>
+  <mat-form-field>
+      <input matInput [(ngModel)]="qa.answer" placeholder="{{qa.answer}}">
+  </mat-form-field> <br>
+  <button mat-raised-button (click)="submit()">Done</button>`,
+})
+export class EditModal {
+
+  qa : QA = this.data.current;
+
+  constructor(private QAService: QuestionAnswerService,
+    private setService: StudySetService,
+    public dialogRef: MatDialogRef<EditModal>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+      this.qa = this.QAService.currentQA;
+     }
+
+  onNoClick(): void {
+    this.QAService.currentQA = this.qa;
+    this.dialogRef.close();
+  }
+
+  submit() {
+    this.QAService.currentQA = this.qa;
     this.dialogRef.close();
   }
 }

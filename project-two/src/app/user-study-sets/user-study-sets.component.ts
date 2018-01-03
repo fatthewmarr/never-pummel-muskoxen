@@ -23,11 +23,8 @@ export class UserStudySetsComponent  {
       this.OSets.subscribe(val => this.sets = val);
     }
 
-    gotoSet(name : String) {
-      var that = this;
-      setTimeout(function() {
-        that.setService.getSetByName(name).subscribe(val => that.setService.currentSet = val);
-      }, 200);
+    gotoSet(set : StudySet) {
+      this.setService.currentSet = set;
       this.router.navigate(['login/dashboard/set']);
     }
 }   
