@@ -18,10 +18,11 @@ export class StudySetService {
   public getStudySets(){
     return this.http.post<StudySet[]>(API_URL, "");
   }
-
+  
   public addStudySet(set: StudySet){
+    var that = this;
     this.http.post<StudySet>(API_URL + "/addset", set, httpOptions).subscribe();
-    this.getSetByName(set.name).subscribe(val => this.currentSet = val);
+    setTimeout(function() {  that.getSetByName(set.name).subscribe(val => that.currentSet = val)}, 50);
   }
 
   public updateStudySet(set: StudySet, amount : number){

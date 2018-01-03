@@ -9,94 +9,40 @@ import { QuestionAnswerService } from '../question-answer.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.css']
+  selector: 'app-study-set-view',
+  templateUrl: './study-set-view.component.html',
+  styleUrls: ['./study-set-view.component.css']
 })
+export class StudySetViewComponent implements OnInit {
 
-export class CarouselComponent implements OnInit {
-  
   OQA : Observable<QA[]>;
   QA : QA[];
-
+  var
   mode : String;
+  set : StudySet;
 
-  constructor(private router: Router, private QAService: QuestionAnswerService, public dialog: MatDialog) {
-    this.OQA = this.QAService.getQAsBySet("no");
+  constructor(private setService : StudySetService, private router: Router, 
+    private QAService: QuestionAnswerService, public dialog: MatDialog) {
+    this.set = this.setService.currentSet;
+    this.OQA = this.QAService.getQAsBySet(this.set.name);
     this.OQA.subscribe(val => this.QA = val);
   }
-
-  ngOnInit() {  
-  }
-  
-  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
-
-  afterChange(e) {
-  }
-  
-  openCreateModal(): void {
-    let dialogRef = this.dialog.open(CreateStudysetModal, {
-      width: '400px',
-      data: {}
-    });
-
-    var that = this;
-    dialogRef.afterClosed().subscribe(result => {
-      setTimeout(function() {  that.openQAModal(); }, 300);
-    });
-  }
-
   openQAModal(): void {
     let dialogRef = this.dialog.open(QAModal, {
       width: '450px',
-      height: '80%',
       data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(['login/set']);
+      this.OQA = this.QAService.getQAsBySet(this.set.name);
+      this.OQA.subscribe(val => this.QA = val);
     }); 
   }
+  ngOnInit() {
+  }
+
 }
 
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  template: `<div class="example-container">
-              <section class="mat-typography">
-                <h2 style="text-align:center;">New Studyset</h2>
-              </section>
-              <mat-form-field>
-               <input matInput [(ngModel)]="name" placeholder="Studyset Name">
-              </mat-form-field>
-              <div style="display: flex; justify-content:center;">
-              <button mat-button (click)="createStudySet()">Create</button>
-              <button mat-button (click)="closeThis()">Cancel</button> </div>
-            </div>`,
-})
-export class CreateStudysetModal {
-
-  name = '';
-  set : StudySet = new StudySet();
-
-  constructor(private setService: StudySetService,
-    public dialogRef: MatDialogRef<CreateStudysetModal>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  closeThis() {
-    this.dialogRef.close();
-  }
-
-  createStudySet() {
-    this.set.name = this.name;
-    this.set.author = { "id" : 1 };
-    this.setService.addStudySet(this.set);
-    this.dialogRef.close();
-  }
-}
 
 @Component({
   selector: 'dialog-overview-example-dialog',

@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginSignupPageComponent } from './login-signup-page/login-signup-page.component';
 import { DasboardComponent } from './dasboard/dasboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { StudySetViewComponent } from './study-set-view/study-set-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' }, 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent},
   { path: 'signup', component: SignupPageComponent},
   { path: 'login/dashboard', component: DasboardComponent},
-  {path: 'profile', component: UserProfileComponent}
+  { path: 'profile', component: UserProfileComponent},
+  { path: 'login/set', component: StudySetViewComponent}
 ]
 
 @NgModule({
