@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component
 @Entity
 @Table(name="STUDY_SESSIONS")
@@ -33,7 +35,7 @@ public class StudySession {
 	
 	@JoinColumn(name="AUTHOR_ID")
 	@ManyToOne(fetch=FetchType.EAGER, targetEntity=User.class)
-	private Integer authorid;
+	private User author;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="SESSION_ATTENDANTS",
@@ -47,17 +49,19 @@ public class StudySession {
 	@Column(name="STUDYSESSION_LOCATION")
 	private String location;
 	
-	@Column(name="STUDYSESSION_TIME")
+	@Column(name="STUDYSESSION_TIME", nullable = false)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm") 
 	private Timestamp submitted;
 	
 	@Column(name="STUDYSESSION_DESCRIPTION")
 	private String description;
 
 	public StudySession() {};
-	public StudySession(Integer author_id, List<User> user, String name, String location, Timestamp submitted,
+	
+	public StudySession(User author_id, List<User> user, String name, String location, Timestamp submitted,
 			String description) {
 		super();
-		this.authorid = author_id;
+		this.author = author_id;
 		this.user = user;
 		this.name = name;
 		this.location = location;
@@ -65,11 +69,11 @@ public class StudySession {
 		this.description = description;
 	}
 
-	public StudySession(Integer id, Integer author_id, List<User> user, String name, String location,
+	public StudySession(Integer id, User author_id, List<User> user, String name, String location,
 			Timestamp submitted, String description) {
 		super();
 		this.id = id;
-		this.authorid = author_id;
+		this.author = author_id;
 		this.user = user;
 		this.name = name;
 		this.location = location;
@@ -80,64 +84,50 @@ public class StudySession {
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public Integer getAuthor_id() {
-		return authorid;
+	public User getAuthor() {
+		return author;
 	}
-
-	public void setAuthor_id(Integer author_id) {
-		this.authorid = author_id;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
-
 	public List<User> getUser() {
 		return user;
 	}
-
 	public void setUser(List<User> user) {
 		this.user = user;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getLocation() {
 		return location;
 	}
-
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
 	public Timestamp getSubmitted() {
 		return submitted;
 	}
-
 	public void setSubmitted(Timestamp submitted) {
 		this.submitted = submitted;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	@Override
 	public String toString() {
-		return "StudySession [id=" + id + ", author_id=" + authorid + ", user=" + user + ", name=" + name
+		return "StudySession [id=" + id + ", author_id=" + author + ", user=" + user + ", name=" + name
 				+ ", location=" + location + ", submitted=" + submitted + ", description=" + description + "]";
 	}
-	
+
 	
 }
