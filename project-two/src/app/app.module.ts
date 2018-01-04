@@ -21,13 +21,14 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { DasboardComponent } from './dasboard/dasboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { CarouselComponent, CreateStudysetModal, QAModal } from './carousel/carousel.component';
+import { CarouselComponent, CreateStudysetModal, QAModal, UserStudySessionsModal } from './carousel/carousel.component';
 import { UserStudySetsComponent } from './user-study-sets/user-study-sets.component';
-import { UserStudySessionsComponent } from './user-study-sessions/user-study-sessions.component';
+import { UserStudySessionsComponent, viewStudySessionModal } from './user-study-sessions/user-study-sessions.component';
 import { StudySetService } from './study-set.service';
 import { QuestionAnswerService } from './question-answer.service';
-import { MatFormFieldModule, MatDialogModule, MatRadioModule, MatSlideToggleModule } from '@angular/material';
+import { MatFormFieldModule, MatDialogModule, MatRadioModule, MatSlideToggleModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { StudysessionserviceService } from './studysessionservice.service';
 import { UserProfileService } from './user-profile/user-profile.service';
 import { HttpModule } from '@angular/http';
 import { StudySetViewComponent, EditModal, QAModal2 } from './study-set-view/study-set-view.component';
@@ -48,7 +49,9 @@ import { StudySetViewComponent, EditModal, QAModal2 } from './study-set-view/stu
     UserProfileComponent,
     StudySetViewComponent,
     EditModal,
-    QAModal2
+    QAModal2,
+    viewStudySessionModal,
+    UserStudySessionsModal
   ],
   imports: [
     BrowserModule,
@@ -70,10 +73,12 @@ import { StudySetViewComponent, EditModal, QAModal2 } from './study-set-view/stu
     HttpClientModule,
     MatRadioModule,
     HttpModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule
   ],
-  entryComponents: [CreateStudysetModal, QAModal, QAModal2, EditModal],
-  providers: [CookieService,  StudySetService, QuestionAnswerService, UserProfileService],
+  entryComponents: [CreateStudysetModal, QAModal, QAModal2, EditModal, viewStudySessionModal, UserStudySessionsModal],
+  providers: [CookieService,  StudySetService, QuestionAnswerService, UserProfileService, StudysessionserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
