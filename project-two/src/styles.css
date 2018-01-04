@@ -2,8 +2,9 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
  body {
-    background: url(../src/assets/images/bg.jpg);
+    background: url(../src/assets/images/bg.jpg) left top repeat;
     text-align: center;
+    
 }
 
 .suit_and_tie {

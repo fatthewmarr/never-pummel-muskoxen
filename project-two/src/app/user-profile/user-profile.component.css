@@ -43,6 +43,9 @@ body {
   
   .page-head-image img {
     border-radius: 50%;
+    padding:7px;
+    border:10px solid #021a40;
+    background-color:rgb(255, 255, 255);
   }
   
   #form-trabalhe {
