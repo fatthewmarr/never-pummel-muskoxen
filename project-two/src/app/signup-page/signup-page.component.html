@@ -3,35 +3,63 @@
 
   <br>
 
-  <form (ngSubmit)="processForm()" class="signup-example-form" style="margin-top: 4%;">
-    <mat-form-field class="signup-example-full-width">
-      <input matInput name="firstname" placeholder="First Name" value="Rony" [(ngModel)]="user.firstname">
+  <form (ngSubmit)="processForm()" class="container" style="margin-top: 4%;" novalidate #registerForm="ngForm">
+   
+    <fieldset>
+    
+    <mat-form-field class="signup-example-full-width" [ngClass]="{'has-error': (firstNameVar.touched || firstNameVar.dirty) && !firstNameVar.valid }">
+      <input matInput name="firstname" id="firstNameId" placeholder="First Name" required [(ngModel)]="user.firstname" #firstNameVar="ngModel">
     </mat-form-field>
+    <span class="help-block" *ngIf="(firstNameVar.touched || firstNameVar.dirty) && firstNameVar.errors">
+      <mat-error *ngIf="firstNameVar.errors.required">
+        Please enter your first name.
+      </mat-error>
+    </span>
 
     <br>
 
-    <mat-form-field class="signup-example-full-width">
-      <input matInput name="lastname" placeholder="Last Name" value="Alvarez" [(ngModel)]="user.lastname">
+    <mat-form-field class="signup-example-full-width" [ngClass]="{'has-error': (lastNameVar.touched || lastNameVar.dirty) && !lastNameVar.valid }">
+      <input matInput name="lastname" id="lastNameId" placeholder="Last Name" required [(ngModel)]="user.lastname" #lastNameVar="ngModel">
     </mat-form-field>
+    <span class="help-block" *ngIf="(lastNameVar.touched || lastNameVar.dirty) && lastNameVar.errors">
+      <mat-error *ngIf="lastNameVar.errors.required">
+        Please enter your last name.
+      </mat-error>
+    </span>
 
     <br>
 
-    <mat-form-field class="signup-example-full-width">
-      <input matInput name="email" placeholder="Email" value="ronyalvarez@gmail.com" [(ngModel)]="user.email">
+    <mat-form-field class="signup-example-full-width" [ngClass]="{'has-error': (emailVar.touched || emailVar.dirty) && !emailVar.valid }">
+      <input matInput name="email" id="emailId" placeholder="Email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+"
+      [(ngModel)]="user.email" #emailVar="ngModel">
     </mat-form-field>
+    <span class="help-block" *ngIf="(emailVar.touched || emailVar.dirty) && emailVar.errors">
+      <mat-error *ngIf="emailVar.errors.required">
+        Please enter your email address.
+      </mat-error>
+      <mat-error *ngIf="emailVar.errors.pattern">
+        Please enter a valid email address.
+      </mat-error>
+
+    </span>
 
     <br>
 
-    <mat-form-field class="signup-example-full-width">
-      <input matInput name="password" type="password" placeholder="Password" value="Password" [(ngModel)]="user.password">
+    <mat-form-field class="signup-example-full-width" [ngClass]="{'has-error': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }">
+      <input matInput name="password" type="password" placeholder="Password" required [(ngModel)]="user.password" #passwordVar="ngModel">
     </mat-form-field>
+    <span class="help-block" *ngIf="(passwordVar.touched || passwordVar.dirty) && passwordVar.errors">
+      <mat-error *ngIf="passwordVar.errors.required">
+        Please enter a password.
+      </mat-error>
+    </span>
 
     <br>
 
     <div class="variation-b">
       <button type="submit" (click)="processForm()" class="suit_and_tie">SIGN UP</button>
     </div>
-
+  </fieldset>
     <br>
 
     <p style="color: white;">Already have an account?
