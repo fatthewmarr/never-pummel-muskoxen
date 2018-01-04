@@ -17,7 +17,7 @@
 }
 
 .UIButton, .UIButton:visited {
-    background-color: #3ccfcf;
+    background-color: #337AB7;
     color: #fff;
 }
 
@@ -39,4 +39,14 @@ a:hover {
 
 .round {
     border-radius: 50%;
+}
+
+.slick-prev {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

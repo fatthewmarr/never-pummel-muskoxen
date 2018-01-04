@@ -7,7 +7,7 @@
 
     <form (ngSubmit)="processForm()" class="example-form" style="font-size: 1.3em;">
         <mat-form-field class="example-full-width" style="width: 100%;">
-            <input matInput name="search" placeholder="Search for study sets">
+            <input matInput name="search" [(ngModel)]="name" placeholder="Search for study sets">
             <mat-hint align="left">Search all</mat-hint>
         </mat-form-field>
     </form>
