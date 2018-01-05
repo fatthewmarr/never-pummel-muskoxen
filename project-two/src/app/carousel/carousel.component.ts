@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { StudysessionserviceService } from '../studysessionservice.service';
 import { StudySession } from '../../studysession';
+import { UserProfileService } from '../user-profile/user-profile.service';
 
 @Component({
   selector: 'app-carousel',
@@ -25,7 +26,7 @@ export class CarouselComponent implements OnInit {
 
   mode : String;
 
-  constructor(private cookie : CookieService, private router: Router, private QAService: QuestionAnswerService, public dialog: MatDialog) {
+  constructor(private userService : UserProfileService, private cookie : CookieService, private router: Router, private QAService: QuestionAnswerService, public dialog: MatDialog) {
     this.OQA = this.QAService.getQAsBySet("no");
     this.OQA.subscribe(val => this.QA = val);
   }
@@ -47,6 +48,10 @@ export class CarouselComponent implements OnInit {
  
       width: '400px',
       data: {}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+     // this.cookie.set('Test', JSON.stringify(this.userService.user));
+      //location.reload();
     });
   }
 
@@ -71,7 +76,7 @@ export class CarouselComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(['login/dashboard/set']);
+      this.router.navigate(['set']);
     }); 
   }
 }
@@ -224,8 +229,6 @@ export class QAModal {
 </mat-select>
 </mat-form-field>
 
-  
-    <p> Selected value: {{sessionTime}} </p>
 
   <mat-form-field>
     <textarea matInput matTextareaAutosize [(ngModel)]="sessionDescription" placeholder="Description"></textarea>

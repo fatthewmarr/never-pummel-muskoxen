@@ -38,10 +38,10 @@ cookieValue: string;
 selector: 'dialog-overview-example-dialog',
 template: `<div class="example-container">
             <section class="mat-typography">
-              <h2 style="text-align:center;">{{session.name}}</h2>
-              <h3 style="text-align:center;">{{session.submitted}}</h3>
-              <h3 style="text-align:center;">{{session.location}}</h3>
-              <h3 style="text-align:center;">{{session.description}}</h3>
+              <b><h1 style="text-align:center;">{{session.name}}</h1></b><br>
+              <h3 style="text-align:center;">When: {{session.submitted | date:'MM/dd/yyyy - h:mma'}}</h3><br>
+              <h3 style="text-align:center;">Where: {{session.location}}</h3><br>
+              <h3 style="text-align:center;">Description: {{session.description}}</h3>
             </section>
             <div style="display: flex; justify-content:center;">
             <button mat-button (click)="closeThis()">Cancel</button> </div>

@@ -100,6 +100,7 @@ export class QAModal2 {
     var currentQA = new QA();
     currentQA.answer = "";
     currentQA.question = "";
+    currentQA.studyset = { "id": this.setService.currentSet.id };
     this.QA.push(currentQA);
   }
 

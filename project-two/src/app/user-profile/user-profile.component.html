@@ -13,12 +13,21 @@
 
   <form id="form-work" class="" name="form-work" action="#" novalidate (ngSubmit)="save(signupForm)" #signupForm="ngForm">
 
+      
     <fieldset>
+
+        <div class="form-group">
+            <div class="col-md-6">
+              <label class="control-label" for="idId"></label>
+              <input id="idId" name="id" class="form-control" type="hidden"
+                [(ngModel)]="user.id" #idVar="ngModel">
+            </div>
+          </div>
 
       <div class="form-group" [ngClass]="{'has-error': (firstNameVar.touched || firstNameVar.dirty) && !firstNameVar.valid }">
         <div class="col-md-6">
           <label class="control-label" for="firstNameId">First Name</label>
-          <input id="firstNameId" name="firstName" class="form-control" placeholder="First Name (required)" type="text" required minlength="3"
+          <input id="firstnameId" name="firstname" class="form-control" placeholder="First Name (required)" type="text" required minlength="3"
             [(ngModel)]="user.firstname" #firstNameVar="ngModel">
           <span class="help-block" *ngIf="(firstNameVar.touched || firstNameVar.dirty) && firstNameVar.errors">
             <span *ngIf="firstNameVar.errors.required">
@@ -34,7 +43,7 @@
       <div class="form-group" [ngClass]="{'has-error': (lastNameVar.touched || lastNameVar.dirty) && !lastNameVar.valid }">
         <div class="col-md-6">
           <label class="control-label" for="lastNameId">Last Name</label>
-          <input id="lastNameId" name="lastName" class="form-control" placeholder="Last Name (required)" type="text" required minlength="3"
+          <input id="lastnameId" name="lastname" class="form-control" placeholder="Last Name (required)" type="text" required minlength="3"
             [(ngModel)]="user.lastname" #lastNameVar="ngModel">
           <span class="help-block" *ngIf="(lastNameVar.touched || lastNameVar.dirty) && lastNameVar.errors">
             <span *ngIf="lastNameVar.errors.required">

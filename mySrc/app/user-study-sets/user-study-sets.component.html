@@ -1,0 +1,12 @@
+<div class="row">
+  
+  <div class="column" *ngFor="let set of sets">
+    <mat-card class="example-card" style="margin-bottom: 1%;">
+      <mat-card-content>
+        <p>50 Questions | {{set.name}}</p>
+      </mat-card-content>
+      <a (click)="gotoSet(set)" class="btn btn-primary">Open</a>
+    </mat-card>
+  </div>
+
+</div>

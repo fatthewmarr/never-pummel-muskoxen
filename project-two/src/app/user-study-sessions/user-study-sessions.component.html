@@ -1,12 +1,12 @@
 <div class="row">
- 
- <div class="column" *ngFor="let session of sessions">
-   <mat-card class="example-card" style="margin-bottom: 1%;">
-     <mat-card-content>
-       <p>{{session.name}}</p>
-     </mat-card-content>
-     <a (click)="openSessionModal(session)" class="btn btn-primary">Open</a>
-   </mat-card>
- </div>
+  
+  <div class="column" *ngFor="let session of sessions">
+    <mat-card class="example-card" style="margin-bottom: 1%;">
+      <mat-card-content>
+        <p>{{session.name}}</p>
+      </mat-card-content>
+      <a (click)="openSessionModal(session)" class="btn btn-primary">Open</a>
+    </mat-card>
+  </div>
 
 </div>

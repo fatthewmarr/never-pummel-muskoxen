@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
 
  
   constructor(private _userService: UserProfileService, private _http: HttpClient, private _cookieService: CookieService) { 
-    this._userService.getUserbyId().subscribe(user=>this.user = user);
+    this.user = JSON.parse(this._cookieService.get('Test'));
 }
 
   ngOnInit() {
@@ -29,6 +29,7 @@ export class UserProfileComponent implements OnInit {
   }
   
   save(userForm: NgForm){
+
     this._cookieService.set('Test', JSON.stringify(userForm.value));
     console.log("in user-profile" + JSON.stringify(userForm.value));
     let p = Object.assign({}, this.user, userForm.value);

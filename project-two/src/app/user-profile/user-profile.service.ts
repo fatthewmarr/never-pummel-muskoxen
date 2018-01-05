@@ -24,7 +24,6 @@ export class UserProfileService implements OnInit {
   public ngOnInit(): void {
 
 }
-
 getUserbyId(): Observable < IUser > {
   return this._http.get<IUser>(this._usersUrl + "/" + this.user.id);
 }
