@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+ body {
+    background: url(../src/assets/images/bg.jpg);
+    text-align: center;
+}
+
+.suit_and_tie {
+  color: white;
+  font-size: 20px;
+  font-family: helvetica;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  transition-duration: .2s;
+  -webkit-transition-duration: .2s;
+  -moz-transition-duration: .2s;
+  background-color: rgba(8, 8, 8, 0);
+  padding: 4px 30px;
+  width: 70%;
+}
+    
+.suit_and_tie:hover {
+  color: lightskyblue;
+  background-color: white;
+  transition-duration: .2s;
+  -webkit-transition-duration: .2s;
+  -moz-transition-duration: .2s;
+  cursor: pointer;
+}

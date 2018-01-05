@@ -1,0 +1,43 @@
+<!--<mat-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+  <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+    {{season}}
+  </mat-radio-button>
+</mat-radio-group>
+-->
+
+<app-navbar></app-navbar>
+
+<h2 style="font-weight: 600; padding-top: 5%;">{{set.name}}</h2>
+
+<mat-slide-toggle [color]="primary" [checked]="exists" (click)="toggle()">
+  Show Answers
+</mat-slide-toggle>
+<br>
+<br>
+<div *ngFor="let qa of QA" style="text-align: center;">
+  <mat-card style="width:90%; margin-left: 5%; text-align: left;">
+    <mat-card-content>
+      <div class="element1">
+        <p class="question">
+          {{qa.question}}
+        </p>
+      </div>
+      <div class="element2">
+        <a (click)=openEditModal(qa) style="padding: 0">
+          <mat-icon>edit</mat-icon>
+        </a>
+        <!-- <button mat-button (click)=openEditModal(qa) style="padding: 0">
+          <mat-icon>edit</mat-icon>
+        </button> -->
+      </div>
+    </mat-card-content>
+    <br>
+    <mat-card-content *ngIf="exists" class="answer">
+      {{qa.answer}}
+    </mat-card-content>
+  </mat-card>
+  <br>
+</div>
+
+<button mat-raised-button (click)="routeBack()">Back</button>
+<button mat-raised-button (click)="openQAModal()">Add</button>

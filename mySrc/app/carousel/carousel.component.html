@@ -1,0 +1,32 @@
+<!-- You can now use your library component in app.component.html -->
+<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+    <div ngxSlickItem class="slide">
+        <mat-card class="example-card" style="font-size: 3.9em;">
+            <mat-card-header style="text-align: left">
+                <mat-card-title>Create a Study Set</mat-card-title>
+                <mat-card-subtitle>Create a study set for any subject you're learning.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+            </mat-card-content>
+            <mat-card-actions style="text-align: left;padding-left:17px;">
+                <button mat-button class="UIButton" (click)="openCreateModal()">Create a study set</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div ngxSlickItem class="slide">
+        <mat-card class="example-card" style="font-size: 3.9em;">
+            <mat-card-header style="text-align: left">
+                <mat-card-title>Create a Study Session</mat-card-title>
+                <mat-card-subtitle>Create a study session for any subject you're learning.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+            </mat-card-content>
+            <mat-card-actions style="text-align: left;padding-left:17px;">
+                <button mat-button class="UIButton">Create a study session</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</ngx-slick>
+
+<!-- <a (click)="slickModal.slickPrev()" class="previous round">&#8249;</a>
+<a (click)="slickModal.slickNext()" class="previous round">&#8250;</a> -->
